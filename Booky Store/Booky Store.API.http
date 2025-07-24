@@ -1,0 +1,6 @@
+@Booky_Store.API_HostAddress = http://localhost:5155
+
+GET {{Booky_Store.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
