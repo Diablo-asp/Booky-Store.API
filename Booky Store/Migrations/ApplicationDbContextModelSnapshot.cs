@@ -128,7 +128,7 @@ namespace Booky_Store.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("authors");
+                    b.ToTable("authors", (string)null);
 
                     b.HasData(
                         new
@@ -200,7 +200,7 @@ namespace Booky_Store.API.Migrations
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("books");
+                    b.ToTable("books", (string)null);
 
                     b.HasData(
                         new
@@ -259,7 +259,7 @@ namespace Booky_Store.API.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("BookAuthors");
+                    b.ToTable("BookAuthors", (string)null);
 
                     b.HasData(
                         new
@@ -301,7 +301,7 @@ namespace Booky_Store.API.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("carts");
+                    b.ToTable("carts", (string)null);
                 });
 
             modelBuilder.Entity("Booky_Store.API.Models.Category", b =>
@@ -321,7 +321,7 @@ namespace Booky_Store.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("categories");
+                    b.ToTable("categories", (string)null);
 
                     b.HasData(
                         new
@@ -393,7 +393,7 @@ namespace Booky_Store.API.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("orders");
+                    b.ToTable("orders", (string)null);
                 });
 
             modelBuilder.Entity("Booky_Store.API.Models.OrderItem", b =>
@@ -425,7 +425,7 @@ namespace Booky_Store.API.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("orderItems");
+                    b.ToTable("orderItems", (string)null);
                 });
 
             modelBuilder.Entity("Booky_Store.API.Models.Publisher", b =>
@@ -454,7 +454,7 @@ namespace Booky_Store.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("publishers");
+                    b.ToTable("publishers", (string)null);
 
                     b.HasData(
                         new

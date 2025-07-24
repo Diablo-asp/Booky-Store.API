@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
+
 namespace Booky_Store.API.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,6 +31,19 @@ namespace Booky_Store.API.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<BookAuthor>()
+            .HasKey(ba => new { ba.BookId, ba.AuthorId });
+
+            builder.Entity<BookAuthor>()
+                .HasOne(ba => ba.Book)
+                .WithMany(b => b.BookAuthors)
+                .HasForeignKey(ba => ba.BookId);
+
+            builder.Entity<BookAuthor>()
+                .HasOne(ba => ba.Author)
+                .WithMany()
+                .HasForeignKey(ba => ba.AuthorId);
 
 
             // Seed Categories

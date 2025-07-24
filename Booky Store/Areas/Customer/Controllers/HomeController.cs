@@ -5,6 +5,7 @@ namespace Booky_Store.API.Areas.Customer.Controllers
 {
     [Route("api/[area]/[controller]")]
     [Area("Customer")]
+    [ApiController]
     public class HomeController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

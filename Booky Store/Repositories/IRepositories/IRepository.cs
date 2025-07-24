@@ -9,6 +9,8 @@ namespace Booky_Store.API.API.Repositories.IRepositories
 
         Task<bool> DeleteAsync(T entity);
 
+        IQueryable<T> GetQueryable();
+
 
         Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>>?
                expression = null, Expression<Func<T, object>>[]? includes = null, bool tracked = true);

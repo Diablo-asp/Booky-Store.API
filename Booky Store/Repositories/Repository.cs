@@ -61,6 +61,11 @@ namespace Booky_Store.API.API.Repositories.IRepositories
             }
         }
 
+        public IQueryable<T> GetQueryable()
+        {
+            return _db.AsQueryable();
+        }
+
         public async Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>>?
             expression = null, Expression<Func<T, object>>[]? includes = null, bool tracked = true)
         {

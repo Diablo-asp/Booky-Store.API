@@ -23,5 +23,7 @@ namespace Booky_Store.API.Models
         public Publisher Publisher { get; set; }
         public int PublisherId { get; set; }
 
+        public ICollection<BookAuthor> BookAuthors { get; set; }
+
     }
 }
