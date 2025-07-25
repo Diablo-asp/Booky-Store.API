@@ -14,6 +14,7 @@ namespace Booky_Store.API.Models
         public double Rate { get; set; }
         public string ISBN { get; set; } = null!;
         public DateOnly PublishDate { get; set; }
+        public int Quantity { get; set; }
         public string? CoverImageUrl { get; set; }
 
 

@@ -31,7 +31,7 @@ namespace Booky_Store.API.Areas.Admin.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<IActionResult> Create([FromForm] CategoryRequest categoryRequest)
+        public async Task<IActionResult> Create([FromForm] CreateCategoryRequest categoryRequest)
         {
             var category = categoryRequest.Adapt<Category>();
 
@@ -50,7 +50,7 @@ namespace Booky_Store.API.Areas.Admin.Controllers
 
             await _unitOfWork.CategoryRepository.CreateAsync(category);
 
-            return Ok(category);
+            return Ok("category Create Successfuly");
         }
 
         [HttpGet("Details/{id}")]

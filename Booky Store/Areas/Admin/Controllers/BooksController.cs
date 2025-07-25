@@ -28,6 +28,7 @@ namespace Booky_Store.API.Areas.Admin.Controllers
                 e.Price,
                 e.Rate,
                 e.Review,
+                e.Quantity,
                 e.Description,
                 e.CoverImageUrl,
                 e.PublishDate,

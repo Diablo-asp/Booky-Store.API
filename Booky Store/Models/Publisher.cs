@@ -10,6 +10,6 @@ namespace Booky_Store.API.Models
         public string? Description { get; set; }
         public bool? IsBestSeller { get; set; } = false;
         public int SellsCount { get; set; }
-        public string? LogoUrl { get; set; }
+        public string LogoUrl { get; set; }
     }
 }

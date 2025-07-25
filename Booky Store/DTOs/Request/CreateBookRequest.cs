@@ -11,6 +11,7 @@ namespace Booky_Store.API.DTOs.Request
         public double Price { get; set; }
         public string ISBN { get; set; } = null!;
         public DateOnly? PublishDate { get; set; }
+        public int Quantity { get; set; }
         public int CategoryId { get; set; }
         public int PublisherId { get; set; }
 
