@@ -34,5 +34,9 @@ namespace Booky_Store.API.Repositories
         public void Dispose()
         {
         }
+        public async Task<int> CompleteAsync()
+        {
+            return await _context.SaveChangesAsync();
+        }
     }
 }

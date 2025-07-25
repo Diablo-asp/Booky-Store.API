@@ -11,5 +11,15 @@ namespace Booky_Store.API.API.Repositories.IRepositories
         {
             _context = context;
         }
+
+        public async Task<IEnumerable<Book>> GetAllBooksWithDetailsAsync()
+        {
+            return await _context.books
+                .Include(b => b.Category)
+                .Include(b => b.Publisher)
+                .Include(b => b.BookAuthors)
+                    .ThenInclude(ba => ba.Author)
+                .ToListAsync();
+        }
     }
 }

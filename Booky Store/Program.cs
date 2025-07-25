@@ -95,6 +95,7 @@ namespace Booky_Store.API
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
+                app.UseDeveloperExceptionPage();
                 app.MapOpenApi();
             }
 

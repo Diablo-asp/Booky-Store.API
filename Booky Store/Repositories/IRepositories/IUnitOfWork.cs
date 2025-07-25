@@ -12,5 +12,7 @@ namespace Booky_Store.API.Repositories.IRepositories
         IOrderItemRepository OrderItemRepository { get; }
         IOrderRepository OrderRepository { get; }
         IPublisherRepository PublisherRepository { get; }
+
+        Task<int> CompleteAsync();
     }
 }

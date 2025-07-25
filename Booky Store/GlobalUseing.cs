@@ -16,3 +16,4 @@ global using Booky_Store.API.Repositories.IRepositories;
 global using Booky_Store.API.Utilty.DBInitilizer;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.IdentityModel.Tokens;
+global using System.ComponentModel.DataAnnotations;

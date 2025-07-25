@@ -28,7 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="wwwroot\images\PublisherLogo\" />
+    <Folder Include="wwwroot\images\CategoryImg\" />
+    <Folder Include="wwwroot\images\AuthorImg\" />
+    <Folder Include="wwwroot\images\BooksImg\" />
     <Folder Include="wwwroot\images\UserProfilePic\" />
   </ItemGroup>
 
