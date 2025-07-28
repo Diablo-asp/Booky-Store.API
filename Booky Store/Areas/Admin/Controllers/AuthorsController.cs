@@ -1,12 +1,14 @@
 ﻿
 
 using Booky_Store.API.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Booky_Store.API.Areas.Admin.Controllers
 {
     [Route("api/[area]/[controller]")]
     [ApiController]
     [Area("Admin")]
+    [Authorize(Roles = $"{SD.SuperAdmin},{SD.Admin},{SD.Employee},{SD.Company}")]
     public class AuthorsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

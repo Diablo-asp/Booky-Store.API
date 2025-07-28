@@ -20,7 +20,7 @@ namespace Booky_Store.API.Models
 
         public DateTime Date { get; set; }
         public DateTime ShippedDate { get; set; }
-        public decimal TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
 
         public OrderStatus OrderStatus { get; set; }
         public string? Carrier { get; set; }

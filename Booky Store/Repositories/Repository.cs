@@ -65,6 +65,10 @@ namespace Booky_Store.API.API.Repositories.IRepositories
         {
             return _db.AsQueryable();
         }
+        public T? Find(int id)
+        {
+            return _context.Set<T>().Find(id);
+        }
 
         public async Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>>?
             expression = null, Expression<Func<T, object>>[]? includes = null, bool tracked = true)

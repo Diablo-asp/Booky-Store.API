@@ -14,5 +14,7 @@ namespace Booky_Store.API.Repositories.IRepositories
         IPublisherRepository PublisherRepository { get; }
 
         Task<int> CompleteAsync();
+
+        Task<bool> CommitAsync();
     }
 }

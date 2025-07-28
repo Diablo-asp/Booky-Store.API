@@ -11,5 +11,21 @@ namespace Booky_Store.API.API.Repositories.IRepositories
         {
             _context = context;
         }
+
+        public async Task<bool> CreateRangeAsync(List<OrderItem> entities)
+        {
+            try
+            {
+                _context.orderItems.AddRange(entities);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ex: {ex}");
+                return false;
+            }
+        }
     }
 }

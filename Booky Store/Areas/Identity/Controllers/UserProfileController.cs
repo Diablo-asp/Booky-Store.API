@@ -3,12 +3,14 @@ using Booky_Store.API.Repositories.IRepositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Booky_Store.API.Areas.Identity.Controllers
 {
     [Route("api/[area]/[controller]")]
     [Area("Identity")]
     [ApiController]
+    [Authorize]
     public class UserProfileController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -120,52 +122,50 @@ namespace Booky_Store.API.Areas.Identity.Controllers
             return Ok("Profile updated successfully!");
         }
 
-        //[HttpGet("MyBooks")]
-        //public async Task<IActionResult> MyBooks()
-        //{
-        //    var user = await _userManager.GetUserAsync(User);
+        [HttpGet("MyBooks")]
+        public async Task<IActionResult> MyBooks()
+        {
+            var user = await _userManager.GetUserAsync(User);
 
-        //    if (user is null)
-        //        return NotFound();
+            if (user is null)
+                return NotFound();
 
-        //    var orders = await _unitOfWork.OrderRepository.GetAsync(
-        //        o => o.ApplicationUserId == user.Id && o.OrderStatus == OrderStatus.Paid
-        //    );
+            var orders = await _unitOfWork.OrderRepository.GetAsync(
+                o => o.ApplicationUserId == user.Id && o.OrderStatus == OrderStatus.Paid
+            );
 
 
 
-        //    var tickets = new List<UserTicketRequest>();
+            var tickets = new List<UserBookRequest>();
 
-        //    foreach (var order in orders)
-        //    {
-        //        var orderItems = await _unitOfWork.OrderItemRepository.GetAsync(
-        //            oi => oi.OrderId == order.Id,
-        //            includes: [oi => oi.Movie, oi => oi.Movie.cenima, oi => oi.Movie.Category]
-        //        );
+            foreach (var order in orders)
+            {
+                var orderItems = await _unitOfWork.OrderItemRepository.GetAsync(
+                    oi => oi.OrderId == order.Id,
+                    includes: [oi => oi.Book, oi => oi.Book.Publisher, oi => oi.Book.Category]
+                );
 
-        //        foreach (var item in orderItems)
-        //        {
-        //            tickets.Add(new UserTicketRequest
-        //            {
-        //                OrderId = order.Id,
-        //                OrderDate = order.Date,
+                foreach (var item in orderItems)
+                {
+                    tickets.Add(new UserBookRequest
+                    {
+                        OrderId = order.Id,
+                        OrderDate = order.Date,
 
-        //                MovieName = item.Movie.Name,
-        //                MovieImage = item.Movie.ImgUrl!,
-        //                MovieStatus = item.Movie.CurrentStatus.ToString(),
-        //                StartDate = item.Movie.StartDate,
-        //                EndDate = item.Movie.EndDate,
-        //                CinemaName = item.Movie.cenima.Name,
-        //                CategoryName = item.Movie.Category.Name,
-        //                OrderStatus = item.Order.OrderStatus.ToString(),
+                        BookName = item.Book.Title,
+                        BookImg = item.Book.CoverImageUrl!,
+                        BookISBN = item.Book.ISBN,
+                        PublisherName = item.Book.Publisher.Name,
+                        CategoryName = item.Book.Category.Name,
+                        OrderStatus = item.Order.OrderStatus.ToString(),
 
-        //                Quantity = item.Quantity, // أو item.Count لو عندك Count
-        //                TotalPrice = item.TotalPrice
-        //            });
-        //        }
-        //    }
+                        Quantity = item.Quantity, // أو item.Count لو عندك Count
+                        TotalPrice = item.TotalPrice,
+                    });
+                }
+            }
 
-        //    return View(tickets);
-        //}
+            return Ok(tickets);
+        }
     }
 }

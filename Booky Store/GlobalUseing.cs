@@ -19,3 +19,5 @@ global using Microsoft.IdentityModel.Tokens;
 global using System.ComponentModel.DataAnnotations;
 global using Mapster;
 global using Microsoft.AspNetCore.Mvc;
+global using Stripe.Checkout;
+global using PaymentMethod = Booky_Store.API.Models.PaymentMethod;

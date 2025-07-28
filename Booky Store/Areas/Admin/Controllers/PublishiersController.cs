@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Booky_Store.API.Areas.Admin.Controllers
 {
     [Route("api/[area]/[controller]")]
     [ApiController]
     [Area("Admin")]
+    [Authorize(Roles = $"{SD.SuperAdmin},{SD.Admin},{SD.Employee},{SD.Company}")]
     public class PublishiersController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

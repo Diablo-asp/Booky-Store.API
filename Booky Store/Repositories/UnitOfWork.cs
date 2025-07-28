@@ -38,5 +38,20 @@ namespace Booky_Store.API.Repositories
         {
             return await _context.SaveChangesAsync();
         }
+
+        public async Task<bool> CommitAsync()
+        {
+            try
+            {
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ex: {ex}");
+                return false;
+            }
+        }
+
     }
 }

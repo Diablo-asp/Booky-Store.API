@@ -11,6 +11,8 @@ namespace Booky_Store.API.API.Repositories.IRepositories
 
         IQueryable<T> GetQueryable();
 
+        T? Find(int id);
+
 
         Task<IEnumerable<T>> GetAsync(Expression<Func<T, bool>>?
                expression = null, Expression<Func<T, object>>[]? includes = null, bool tracked = true);
